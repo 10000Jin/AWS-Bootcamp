@@ -194,6 +194,13 @@ let scoreboardGroup
  */
 let score
 
+
+//document.addEventListener('DOMContentLoaded', () => {
+//    const usernameInput = document.getElementById("name");
+//    const username = usernameInput.value;
+//  });
+
+  
 /**
  *   Load the game assets.
  */
@@ -250,6 +257,7 @@ function preload() {
  *   Create the game objects (images, groups, sprites and animations).
  */
 function create() {
+    console.log("check1")
     backgroundDay = this.add.image(assets.scene.width, 256, assets.scene.background.day).setInteractive()
     backgroundDay.on('pointerdown', moveBird)
     backgroundNight = this.add.image(assets.scene.width, 256, assets.scene.background.night).setInteractive()
@@ -538,6 +546,8 @@ function restartGame() {
     restartButton.visible = false
 
     const gameScene = game.scene.scenes[0]
+    console.log("check2")
+    sendinfo(score)
     prepareGame(gameScene)
 
     gameScene.physics.resume()
@@ -583,4 +593,33 @@ function startGame(scene) {
     score0.setDepth(20)
 
     makePipes(scene)
+}
+
+
+function sendinfo(score) {
+    //document.addEventListener('DOMContentLoaded', () => {
+        const usernameInput = document.getElementById("name");
+        const username = usernameInput.value;
+      //});
+
+    console.log("check3")
+    console.log(username);
+    console.log(score);
+
+    fetch("../db-php/insert_db.php", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({ name: username, point: score}),
+      })
+        .then(() => {
+            console.log("Data sent successfully");
+        })
+        //.then((data) => {
+          // handle the response from the PHP file
+        //})
+        .catch((error) => {
+          console.error("Error:", error);
+        });
 }

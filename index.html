@@ -40,9 +40,76 @@
     <link rel="manifest" href="/manifest.json">
 
     <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/new.css">      <!--새롭게 추가-->
     <script src="//cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser.js" type="text/javascript"></script>
     <script src="js/game.js" type="text/javascript"></script>
+    <!-- <script src="js/getInstanceID.js" type="text/javascript"></script> -->
+    
 </head>
 <body>
+    <div id="container">
+        <div id="table1">
+            <table id="t1">
+                <th>Instance ID</th>
+                <tr>
+                    <td id="instance-id"></td>
+                </tr>
+            </table> 
+            <table id="t2">
+                <th>Enter User Name</th>
+                <tr>
+                    <td>
+                        <input type="text" id="name" name="name">
+                    </td>
+                </tr>
+            </table> 
+            <img src="img/aws.png" width="200">                     <!-- Demo용 주석 -->
+        </div>
+        <div id="table3">
+            <button id="update-button">Update Table</button>        <!-- Demo용 주석 -->
+            <script src="js/refreashtable.js" type="text/javascript"></script>
+            <table id="t3">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>User Name</th>
+                        <th>Point</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="rank-table-body">
+                </tbody>
+            </table>
+            <p>※ 0점은 집계되지 않습니다.</p>
+            <p>※ 상위 10명의 등수가 출력됩니다.</p>
+            <p>※ 게임 종료 후 "RESTART" 버튼을 클릭해야 점수가 집계됩니다.</p>
+            <script>
+                // Use AJAX to retrieve the JSON object from the PHP file
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var data = JSON.parse(this.responseText);
+                        var tableBody = document.getElementById("rank-table-body");
+                        var count = 0;
+            
+                        // Loop through the data and add it to the table
+                        for (var i = 0; i < 10; i++) {
+                            var row = document.createElement("tr");
+                            count++;
+                            if (data[i]) {
+                                row.innerHTML = "<td>" + count + "</td>" +
+                                                "<td>" + data[i].name + "</td>" +
+                                                "<td>" + data[i].point + "</td>" +
+                                                "<td>" + data[i].creation + "</td>";
+                                tableBody.appendChild(row);
+                            }
+                        }
+                    }
+                };
+                xhr.open("GET", "/db-php/connDB.php", true);
+                xhr.send();
+            </script>
+        </div>
+    </div>
 </body>
 </html>
