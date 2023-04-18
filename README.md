@@ -8,7 +8,7 @@
 
 <br>
 <p align="center"><img src="img\display.png" width="90%"><br/>Screen Shot</p>
-<br><br>
+<br>
 
 ## Table of Contents
 - [How to use](#how-to-use)
@@ -17,11 +17,10 @@
 - [CI/CD Pipeline](#cicd-pipeline)
 - [Demo](#demo)
 
-<br><br>
+<br>
 
 
 ## How to use
----
 
 1. Apache, php 설치
 ```shell
@@ -48,7 +47,6 @@ git clone https://github.com/10000Jin/AWS-Bootcamp.git flappy-bird
 
 
 ## 3-Tier Architecture
----
 > Service하는 Web Application의 구조.
 <p align="center"><img src="img\3tier.png" width="85%"></p>
 
@@ -196,8 +194,7 @@ AWS CodeDeploy는 In-Place 방식과 Blue-Green 방식을 제공함.
     - 단점
         - 서버를 늘리기 쉽지 않은 On-Premise 환경에서는 쉽지 않음. 가상환경이나 클라우드 환경에서 가능.
 
-<br><br>
-
+<br>
 ## Demo
 ---
 - Demo 영상 (유튜브) : https://www.youtube.com/watch?v=90BEKXXqfZ0
