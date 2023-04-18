@@ -64,7 +64,6 @@ git clone https://github.com/10000Jin/AWS-Bootcamp.git flappy-bird
 <br><br>
 
 ## Cloud Architecture
----
 > Web Application을 올릴 서버 Infra 구성.
 <p align="center"><img src="img\aws.png" width="95%"></p>
 
@@ -107,7 +106,6 @@ git clone https://github.com/10000Jin/AWS-Bootcamp.git flappy-bird
 <br><br>
 
 ## CI/CD Pipeline
----
 > CI/CD 파이프라인은 AWS의 CodePipeline을 사용하면 좀 더 정석에 가까울테지만 AWS Bootcamp동안 제공된 학습자용 계정은 CodePipeline과 CodeBuild 사용에 제한이 있었음.   
 > 따라서 코드를 CodeCommit으로 **git push**하는 대신 appspec.yml과 beforeInstall.bash를 포함한 소스를 압축해 S3 버킷에 업로드하였고 CodePipeline 대신 Lambda로 대체.
 
@@ -195,6 +193,6 @@ AWS CodeDeploy는 In-Place 방식과 Blue-Green 방식을 제공함.
         - 서버를 늘리기 쉽지 않은 On-Premise 환경에서는 쉽지 않음. 가상환경이나 클라우드 환경에서 가능.
 
 <br>
+
 ## Demo
----
 - Demo 영상 (유튜브) : https://www.youtube.com/watch?v=90BEKXXqfZ0
